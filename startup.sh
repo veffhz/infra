@@ -6,7 +6,7 @@ sudo su appuser <<'EOF'
   bash infra/install_ruby.sh > /home/appuser/install_ruby.log
 EOF
 
-bash infra/install_mongodb.sh > /home/appuser/install_mongodb.log
+bash /home/appuser/infra/install_mongodb.sh > /home/appuser/install_mongodb.log
 
 sudo su appuser <<'EOF'
   cd /home/appuser
