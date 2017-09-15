@@ -14,7 +14,7 @@
      "zone": "europe-west1-b",
      "ssh_username": "appuser",
      "machine_type": "{{user `machine_type`}}",
-     "image_description": "true devops image, created with packer",
+     "image_description": "Ubuntu16, ruby, mongodb, web app. Created with packer",
      "disk_size": 10,
      "disk_type": "pd-standard",
      "network": "default",
@@ -44,8 +44,8 @@
       "type": "file"
     },
 	{
-	  "type": "shell",
-	  "inline": ["chmod +x /home/appuser/reddit/run.sh"]
+      "type": "shell",
+      "inline": ["chmod +x /home/appuser/reddit/run.sh"]
 	},
     {
       "destination": "/home/appuser/puma.service",
@@ -53,12 +53,12 @@
       "type": "file"
     },
     {
-	  "type": "shell",
-	  "inline": ["sudo cp /home/appuser/puma.service /etc/systemd/system/puma.service"]
+      "type": "shell",
+      "inline": ["sudo cp /home/appuser/puma.service /etc/systemd/system/puma.service"]
     },
     {
-	  "type": "shell",
-	  "inline": ["sudo systemctl enable puma"]
+      "type": "shell",
+      "inline": ["sudo systemctl enable puma"]
     }
   ]
 }
