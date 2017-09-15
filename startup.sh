@@ -3,7 +3,7 @@
 # install ruby
 sudo su appuser <<'EOF'
   cd /home/appuser
-  git clone -b config-scripts https://github.com/veffhz/infra.git # Fix branch name after merge!
+  git clone https://github.com/veffhz/infra.git
   bash infra/install_ruby.sh > /home/appuser/install_ruby.log
 EOF
 

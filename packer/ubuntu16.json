@@ -14,7 +14,7 @@
      "zone": "europe-west1-b",
      "ssh_username": "appuser",
      "machine_type": "{{user `machine_type`}}",
-     "image_description": "true devops image, created with packer",
+     "image_description": "Ubuntu16, ruby, mongodb. Created with packer",
      "disk_size": 10,
      "disk_type": "pd-standard",
      "network": "default",
@@ -30,9 +30,9 @@
       "script": "scripts/install_ruby.sh"
     },
     {
-	  "type": "shell",
-	  "script": "scripts/install_mongodb.sh",
-	  "execute_command": "sudo {{.Path}}"
+      "type": "shell",
+      "script": "scripts/install_mongodb.sh",
+      "execute_command": "sudo {{.Path}}"
     }
   ]
 }
