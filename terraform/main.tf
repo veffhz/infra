@@ -25,11 +25,15 @@ resource "google_compute_instance" "app" {
     access_config {}
   }
 
+  metadata {
+    sshKeys = "${var.user_name}:${file(var.public_key_path)}"
+  }
+
   connection {
     type        = "ssh"
     user        = "${var.user_name}"
     agent       = false
-    private_key = "${file("~/.ssh/appuser")}"
+    private_key = "${file(var.private_key_path)}"
   }
 
   provisioner "file" {
