@@ -1,8 +1,8 @@
 resource "google_compute_instance" "db" {
-  name         = "reddit-db"
-  machine_type = "g1-small"
-  zone         = "europe-west1-b"
-  tags         = ["reddit-db"]
+  name = "${var.db_instance_name}"
+  machine_type  = "${var.db_machine_type}"
+  zone          = "${var.db_zone}"
+  tags          = "${var.db_tags}"
 
   # определение загрузочного диска
   boot_disk {
@@ -34,6 +34,6 @@ resource "google_compute_firewall" "firewall_mongo" {
     ports    = ["27017"]
   }
 
-  target_tags = ["reddit-db"]
-  source_tags = ["reddit-app"]
+  target_tags = "${var.db_tags}"
+  source_tags = "${var.app_tags}"
 }

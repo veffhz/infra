@@ -1,8 +1,8 @@
 resource "google_compute_instance" "app" {
-  name         = "reddit-app"
-  machine_type = "g1-small"
-  zone         = "europe-west1-b"
-  tags         = ["reddit-app"]
+  name = "${var.app_instance_name}"
+  machine_type  = "${var.app_machine_type}"
+  zone          = "${var.app_zone}"
+  tags          = "${var.app_tags}"
 
   # определение загрузочного диска
   boot_disk {
@@ -18,7 +18,7 @@ resource "google_compute_instance" "app" {
 
     # использовать ephemeral IP для доступа из Интернет
     access_config {
-      nat_ip = "${google_compute_address.app_ip.address}"
+      nat_ip = "${google_compute_address.app_external_ip.address}"
     }
   }
 
@@ -27,7 +27,7 @@ resource "google_compute_instance" "app" {
   }
 }
 
-resource "google_compute_address" "app_ip" {
+resource "google_compute_address" "app_external_ip" {
   name = "reddit-app-ip"
 }
 
@@ -41,5 +41,5 @@ resource "google_compute_firewall" "firewall_puma" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["reddit-app"]
+  target_tags   = "${var.app_tags}"
 }
