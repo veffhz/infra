@@ -76,3 +76,23 @@ variable db_tags {
 variable bucket_name {
   description = "Prod infra bucket name"
 }
+
+variable app_resource_ip_name {
+  description = "Reddit-app ip resource name"
+}
+
+variable puma_firewall_resource_name {
+  description = "Name firewall resource for puma"
+}
+
+variable mongo_firewall_resource_name {
+  description = "Name firewall resource for mongo"
+}
+
+variable ssh_firewall_resource_name {
+  description = "Name firewall resource for ssh"
+}
+
+variable ip_resource_enabled {
+  description = "Enabled ip resource"
+}

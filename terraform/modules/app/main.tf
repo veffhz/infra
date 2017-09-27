@@ -1,8 +1,8 @@
 resource "google_compute_instance" "app" {
-  name = "${var.app_instance_name}"
-  machine_type  = "${var.app_machine_type}"
-  zone          = "${var.app_zone}"
-  tags          = "${var.app_tags}"
+  name         = "${var.app_instance_name}"
+  machine_type = "${var.app_machine_type}"
+  zone         = "${var.app_zone}"
+  tags         = "${var.app_tags}"
 
   # определение загрузочного диска
   boot_disk {
@@ -28,11 +28,12 @@ resource "google_compute_instance" "app" {
 }
 
 resource "google_compute_address" "app_external_ip" {
-  name = "reddit-app-ip"
+  count = "${var.ip_resource_enabled}"
+  name  = "${var.app_resource_ip_name}"
 }
 
 resource "google_compute_firewall" "firewall_puma" {
-  name    = "allow-puma-default"
+  name    = "${var.puma_firewall_resource_name}"
   network = "default"
 
   allow {

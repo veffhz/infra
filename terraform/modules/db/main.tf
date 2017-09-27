@@ -1,8 +1,8 @@
 resource "google_compute_instance" "db" {
-  name = "${var.db_instance_name}"
-  machine_type  = "${var.db_machine_type}"
-  zone          = "${var.db_zone}"
-  tags          = "${var.db_tags}"
+  name         = "${var.db_instance_name}"
+  machine_type = "${var.db_machine_type}"
+  zone         = "${var.db_zone}"
+  tags         = "${var.db_tags}"
 
   # определение загрузочного диска
   boot_disk {
@@ -26,7 +26,7 @@ resource "google_compute_instance" "db" {
 }
 
 resource "google_compute_firewall" "firewall_mongo" {
-  name    = "allow-mongo-default"
+  name    = "${var.mongo_firewall_resource_name}"
   network = "default"
 
   allow {

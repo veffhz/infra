@@ -31,3 +31,15 @@ variable app_tags {
   description = "Reddit-app tags"
   default     = ["reddit-app"]
 }
+
+variable app_resource_ip_name {
+  description = "Reddit-app ip resource name"
+}
+
+variable puma_firewall_resource_name {
+  description = "Name firewall resource for puma"
+}
+
+variable ip_resource_enabled {
+  description = "Enabled ip resource"
+}

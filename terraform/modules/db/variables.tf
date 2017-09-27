@@ -36,3 +36,7 @@ variable app_tags {
   description = "Reddit-app tags"
   default     = ["reddit-app"]
 }
+
+variable mongo_firewall_resource_name {
+  description = "Name firewall resource for mongo"
+}
