@@ -95,4 +95,5 @@ variable ssh_firewall_resource_name {
 
 variable ip_resource_enabled {
   description = "Enabled ip resource"
+  default     = true
 }

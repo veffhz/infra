@@ -14,7 +14,7 @@ module "app" {
   app_tags                    = "${var.app_tags}"
   app_resource_ip_name        = "${var.app_resource_ip_name}"
   puma_firewall_resource_name = "${var.puma_firewall_resource_name}"
-  ip_resource_enabled         = false
+  ip_resource_enabled         = "${var.ip_resource_enabled}"
 }
 
 module "db" {
