@@ -1,8 +1,11 @@
-resource "google_compute_instance" "app" {
+########### USE STATIC IP ##############
+
+resource "google_compute_instance" "app_static" {
   name         = "${var.app_instance_name}"
   machine_type = "${var.app_machine_type}"
   zone         = "${var.app_zone}"
   tags         = "${var.app_tags}"
+  count        = "${var.ip_resource_enabled}"
 
   # определение загрузочного диска
   boot_disk {
@@ -17,7 +20,9 @@ resource "google_compute_instance" "app" {
     network = "default"
 
     # использовать ephemeral IP для доступа из Интернет
-    access_config {}
+    access_config {
+      nat_ip = "${google_compute_address.app_external_ip.address}"
+    }
   }
 
   metadata {
@@ -41,4 +46,33 @@ resource "google_compute_firewall" "firewall_puma" {
 
   source_ranges = ["0.0.0.0/0"]
   target_tags   = "${var.app_tags}"
+}
+
+########### DO NOT USE STATIC IP ##############
+
+resource "google_compute_instance" "app_ephemeral" {
+  name         = "${var.app_instance_name}"
+  machine_type = "${var.app_machine_type}"
+  zone         = "${var.app_zone}"
+  tags         = "${var.app_tags}"
+  count        = "${1 - var.ip_resource_enabled}"
+
+  # определение загрузочного диска
+  boot_disk {
+    initialize_params {
+      image = "${var.app_disk_image}"
+    }
+  }
+
+  # определение сетевого интерфейса
+  network_interface {
+    # сеть, к которой присоединить данный интерфейс
+    network = "default"
+
+    access_config {}
+  }
+
+  metadata {
+    sshKeys = "${var.user_name}:${file(var.public_key_path)}"
+  }
 }
