@@ -7,6 +7,7 @@ gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial
 - Создание окружения с помощью Terraform
 
  в требуемом окружении (prod/stage) выполнить
+
   terraform init -backend-config=backend.tfvars
   terraform apply
 
