@@ -33,6 +33,10 @@ variable db_disk_image {
   default     = "reddit-db-base"
 }
 
+variable env {
+  description = "Environment name"
+}
+
 variable app_instance_name {
   description = "Reddit-app instance name"
   default     = "reddit-app"
@@ -74,7 +78,7 @@ variable db_tags {
 }
 
 variable bucket_name {
-  description = "Stage infra bucket name"
+  description = "Infra bucket name"
 }
 
 variable app_resource_ip_name {
