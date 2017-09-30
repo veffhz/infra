@@ -1,0 +1,3 @@
+bucket  = "name-bucket-storage"
+path    = "terraform/terraform_st.tfstate"
+project = "project-id"
