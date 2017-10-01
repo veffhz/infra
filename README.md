@@ -7,9 +7,7 @@ gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial
 
 gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial-v20170815a --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b reddit-app --metadata startup-script-url=https://raw.githubusercontent.com/veffhz/infra/master/startup.sh
 
-<br />
-
-- Создание packer-образа:
+##- Создание packer-образа:
 
 ubuntu 16 (ruby, mongodb):
  packer build -var-file=variables.json ./ubuntu16.json
@@ -23,9 +21,7 @@ ubuntu 16 (ruby, mongodb, deploy/start app, port 9292):
  db instance:
  packer build -var-file=variables.json ./db.json
 
-<br />
-
-- Создание окружения с помощью Terraform
+##- Создание окружения с помощью Terraform
 
  в требуемом окружении (prod/stage) выполнить:
 
