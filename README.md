@@ -30,3 +30,11 @@ gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial
 
  для init и apply требуются файлы с переменными.
  Примеры смотри в каталоге example.
+
+## Настройка конфигурации инстансов с помощью Ansible
+
+  ansible-playbook reddit_app.yml --limit db --tags db-tag
+
+  ansible-playbook reddit_app.yml --limit app --tags app-tag
+
+  ansible-playbook reddit_app.yml --limit app --tags deploy-tag
