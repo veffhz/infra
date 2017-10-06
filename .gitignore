@@ -7,3 +7,6 @@
 .vagrant/
 *.logs
 *.log
+*.cache/
+*.pyc
+*cache__/
