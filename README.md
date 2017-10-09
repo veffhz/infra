@@ -38,3 +38,12 @@ gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial
   ansible-playbook reddit_app.yml --limit app --tags app-tag
 
   ansible-playbook reddit_app.yml --limit app --tags deploy-tag
+
+
+#### Создание окружения
+ 
+  stage: ansible-playbook site.yml
+
+  prod: ansible-playbook -i environments/prod/hosts site.yml
+
+
