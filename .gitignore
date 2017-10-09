@@ -10,3 +10,4 @@
 *.cache/
 *.pyc
 *cache__/
+.molecule/

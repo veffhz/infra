@@ -1,3 +1,4 @@
-xmolecule==2.1.0
+ansible==2.3.2
+molecule==2.1.0
 testinfra==1.6.3
 python-vagrant==0.5.15
