@@ -2,8 +2,6 @@
 
 - Создание инстанса с запущенным приложением reddit:
 
-gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial-v20170815a --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b reddit-app --metadata startup-script-url=https://raw.githubusercontent.com/veffhz/infra/config-scripts/startup.sh
-
 gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial-v20170815a --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --zone=europe-west1-b reddit-app --metadata startup-script-url=https://raw.githubusercontent.com/veffhz/infra/master/startup.sh
 
 ## Создание packer-образа:
@@ -38,3 +36,12 @@ gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial
   ansible-playbook reddit_app.yml --limit app --tags app-tag
 
   ansible-playbook reddit_app.yml --limit app --tags deploy-tag
+
+
+#### Создание окружения
+ 
+  stage: ansible-playbook site.yml
+
+  prod: ansible-playbook -i environments/prod/hosts site.yml
+
+

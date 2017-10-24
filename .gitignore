@@ -4,3 +4,12 @@
 *.tfvars
 .terraform/
 .service_cred.json
+*.retry
+.vagrant/
+*.logs
+*.log
+*.cache/
+*.pyc
+*cache__/
+.molecule/
+
