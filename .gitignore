@@ -3,6 +3,7 @@
 *.tfstate.backup
 *.tfvars
 .terraform/
+.service_cred.json
 *.retry
 .vagrant/
 *.logs
@@ -11,3 +12,4 @@
 *.pyc
 *cache__/
 .molecule/
+
